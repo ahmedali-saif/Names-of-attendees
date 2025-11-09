@@ -33,8 +33,12 @@
             flex-wrap: wrap;
         }
         button{min-width:150px;padding:14px;border:none;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:15px}
-        .fetch-btn{background:#2ecc71;color:#fff}.auto-btn{background:#9b59b6;color:#fff}
-        .fetch-btn:hover{background:#27ae60}.auto-btn:hover{background:#8e44ad}
+        .fetch-btn{background:#2ecc71;color:#fff}
+        .auto-btn{background:#9b59b6;color:#fff}
+        .monitor-btn{background:#e67e22;color:#fff}
+        .fetch-btn:hover{background:#27ae60}
+        .auto-btn:hover{background:#8e44ad}
+        .monitor-btn:hover{background:#d35400}
         
         /* تحسينات الحالة */
         .status{margin-top:15px;padding:12px;border-radius:8px;text-align:center;font-weight:bold;display:none}
@@ -72,6 +76,7 @@
     <div class="button-container">
         <button id="fetchData" class="fetch-btn"><span id="fetchLoading" class="loading"></span>جلب البيانات</button>
         <button id="autoUpdate" class="auto-btn"><span id="autoUpdateLoading" class="loading"></span>التحديث التلقائي</button>
+        <button id="monitorAttendance" class="monitor-btn">متابعة الحضور</button>
     </div>
 
     <div id="statusMessage" class="status"></div>
@@ -99,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const attendanceBody = document.getElementById('attendanceBody');
     const fetchDataBtn = document.getElementById('fetchData');
     const autoBtn = document.getElementById('autoUpdate');
+    const monitorBtn = document.getElementById('monitorAttendance');
     const statusMessage = document.getElementById('statusMessage');
     const fetchLoading = document.getElementById('fetchLoading');
     const autoLoading = document.getElementById('autoUpdateLoading');
@@ -169,6 +175,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fetchDataBtn.onclick = () => fetchAttendance(true);
     autoBtn.onclick = autoToggle;
+    monitorBtn.onclick = () => {
+        window.open("https://number-attendees.netlify.app/", "_blank");
+    };
 
     fetchAttendance(false);
 });
